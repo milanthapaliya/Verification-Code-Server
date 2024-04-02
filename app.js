@@ -16,9 +16,9 @@ app.get('/', (req, res) => res.send('Code Verification Server App'));
 app.post('/code', (req,res) => {
     const code = String(req?.body?.code);
     if(code.length != 6 || code.endsWith('7')){
-        return res.status(400).json({ message: "Invalid Code" });
+        return res.status(400).json({error: "Invalid Code", message: "Code must be 6 digits and last digit should not be 7" });
     }else{
-        return res.status(200).json({ message: "Success" });
+        return res.status(200).json({message: "Success" });
     }
 })
 
